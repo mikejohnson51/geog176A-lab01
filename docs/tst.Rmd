@@ -47,10 +47,16 @@ fivenum(cities$population)
 ```
 
 ```{r, echo = FALSE}
-threshold = 10000
+threshold = 1000000
 cities_big = dplyr::filter(cities, population > threshold)
 nrow(cities_big)
 ```
 
-
 There are `r nrow(cities_big)` in the USA with a population bigger then `r threshold`.
+
+```{r}
+ggplot(cities_big) +
+  aes(y = lat, x = lng, color = density, size = population) + 
+  geom_point()
+```
+
