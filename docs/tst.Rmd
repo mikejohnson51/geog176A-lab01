@@ -1,0 +1,56 @@
+---
+title: "Learn Rmarkdown"
+author: "Mike Johnson"
+date: "8/6/2020"
+output:
+  html_document: default
+---
+
+# Header 1
+## Header 2
+### Header 3 
+#### Header 4
+
+*******
+
+- first 
+    - first 2
+    - first 3
+- second 
+- third
+
+1. first
+2. second
+3. third 
+
+********
+
+https://github.com/mikejohnson51/geog176A-lab01
+
+[Link](https://github.com/mikejohnson51/geog176A-lab01)
+
+![](../img/rmarkdownflow.png)
+
+```{r}
+plot(1:105, 1:105)
+```
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+```{r, message = FALSE}
+cities = readr::read_csv("../data/uscities.csv")
+
+dim(cities)
+
+fivenum(cities$population)
+```
+
+```{r, echo = FALSE}
+threshold = 10000
+cities_big = dplyr::filter(cities, population > threshold)
+nrow(cities_big)
+```
+
+
+There are `r nrow(cities_big)` in the USA with a population bigger then `r threshold`.
